@@ -43,6 +43,7 @@ WORKDIR /gpdb_src
 # Configure build environment to install at /usr/local/gpdb
 RUN ./configure --with-perl --with-python --with-libxml --with-gssapi --prefix=/usr/local/greenplum-db \
 && make -j8 \
-&& make -j8 install \
-&& touch /usr/local/greenplum-db/lib/python/pygresql/__init__.py \
-&& sed -ri 's/(GSSAPIAuthentication) yes/#\1 yes/' /etc/ssh/ssh_config
+&& make -j8 install
+#&& make -j8 install \
+#&& touch /usr/local/greenplum-db/lib/python/pygresql/__init__.py \
+#&& sed -ri 's/(GSSAPIAuthentication) yes/#\1 yes/' /etc/ssh/ssh_config
