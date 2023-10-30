@@ -25,7 +25,7 @@ apt-get install -y \
 	libxerces-c-dev \
 	libxml2-dev \
 	libyaml-dev \
-	libzstd-dev=1.4.0 \
+	libzstd-dev \
 	locales \
 	net-tools \
 	ninja-build \
@@ -36,6 +36,7 @@ apt-get install -y \
 	python3-dev \
 	python3-pip \
 	python3-psutil \
+	python3-pygresql \
 	python3-yaml \
 	zlib1g-dev
 
