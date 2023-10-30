@@ -25,7 +25,7 @@ apt-get install -y \
 	libxerces-c-dev \
 	libxml2-dev \
 	libyaml-dev \
-	libzstd-dev \
+	libzstd-dev=1.4.0 \
 	locales \
 	net-tools \
 	ninja-build \
