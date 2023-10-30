@@ -24,7 +24,8 @@ RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf \
 && cd / \
 && chmod +x gpdb_src/concourse/scripts/setup_gpadmin_user.bash \
 && gpdb_src/concourse/scripts/setup_gpadmin_user.bash \
-&& cd /gpdb_src/zstd-1.5.5 \
+
+RUN cd /gpdb_src/zstd-1.5.5 \
 && make \
 && make install
 
