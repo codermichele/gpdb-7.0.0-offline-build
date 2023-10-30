@@ -27,9 +27,13 @@ apt-get install -y \
 	libssl-dev \
 	libxerces-c-dev \
 	libxml2-dev \
-	libyaml-dev \
-	libzstd-dev \
-	locales \
+	libyaml-dev 
+
+	# libzstd-dev \
+cd /gpdb_src/zstd-1.5.5
+make && make install
+
+apt-get install locales \
 	net-tools \
 	ninja-build \
 	openssh-client \
