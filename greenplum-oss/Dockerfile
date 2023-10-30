@@ -1,4 +1,4 @@
-FROM ubuntu:23.04
+FROM ubuntu:18.04
 
 COPY ./ /gpdb_src/
 
@@ -9,6 +9,9 @@ RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf \
 && ldconfig \
 && chmod +x gpdb_src/greenplum-oss/sysconf.bash \
 && gpdb_src/greenplum-oss/sysconf.bash \
+&& cd /gpdb_src/zstd-1.5.5 \
+&& make \
+&& make install \
 # && cd gpdb_src/openssh-7.9p1 \
 # && autoconf \
 # && autoheader \
