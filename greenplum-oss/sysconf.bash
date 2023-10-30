@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo apt-get update
-sudo apt-get install -y \
+apt-get update
+apt-get install -y \
 	bison \
 	ccache \
 	cmake \
@@ -39,7 +39,7 @@ sudo apt-get install -y \
 	python3-yaml \
 	zlib1g-dev
 
-sudo tee -a /etc/sysctl.conf << EOF
+tee -a /etc/sysctl.conf << EOF
 kernel.shmmax = 5000000000000
 kernel.shmmni = 32768
 kernel.shmall = 40000000000
@@ -57,10 +57,10 @@ vm.overcommit_memory = 2
 vm.overcommit_ratio = 95
 EOF
 
-sudo sysctl -p
+sysctl -p
 
-sudo mkdir -p /etc/security/limits.d
-sudo tee -a /etc/security/limits.d/90-greenplum.conf << EOF
+mkdir -p /etc/security/limits.d
+tee -a /etc/security/limits.d/90-greenplum.conf << EOF
 * soft nofile 1048576
 * hard nofile 1048576
 * soft nproc 1048576
