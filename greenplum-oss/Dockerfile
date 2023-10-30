@@ -26,7 +26,7 @@ RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf \
 && gpdb_src/concourse/scripts/setup_gpadmin_user.bash \
 && cd /gpdb_src/zstd-1.5.5 \
 && make \
-&& make install \
+&& make install
 
 WORKDIR /gpdb_src/gp-xerces-3.1.2-p1
 RUN mkdir build \
