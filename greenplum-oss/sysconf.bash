@@ -30,7 +30,7 @@ apt-get install -y \
 	libyaml-dev 
 
 	# libzstd-dev \
-cd /gpdb_src/zstd-1.5.5
+cd /gpdb_src/zstd-1.4.1
 make && make install
 
 apt-get install locales \
