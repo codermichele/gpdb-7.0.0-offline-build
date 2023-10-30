@@ -1,6 +1,9 @@
 #!/bin/bash
 
 apt-get update
+
+apt-cache madison libzstd-dev
+
 apt-get install -y \
 	bison \
 	ccache \
