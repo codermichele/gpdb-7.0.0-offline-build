@@ -24,9 +24,22 @@ apt-get install -y \
 	libperl-dev \
 	libreadline-dev \
 	libssl-dev \
-	libxerces-c-dev \
-	libxml2-dev \
-	libyaml-dev \
+	# libxerces-c-dev \
+	# libxml2-dev \
+
+cd /gpdb_src/libxml2-2.9.0 \
+./autogen.sh \
+make \
+make install
+
+cd /gpdb_src/gp-xerces-3.1.2-p1
+mkdir build
+cd build
+../configure --prefix=/usr/local
+make -j8
+make -j8 install
+
+apt-get install -y libyaml-dev \
 	autoconf \
 	automake
 
