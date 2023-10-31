@@ -23,13 +23,13 @@ apt-get install -y \
 	libpam-dev \
 	libperl-dev \
 	libreadline-dev \
-	libssl-dev \
+	libssl-dev
 	# libxerces-c-dev \
 	# libxml2-dev \
 
-cd /gpdb_src/libxml2-2.9.0 \
-./autogen.sh \
-make \
+cd /gpdb_src/libxml2-2.9.0
+./autogen.sh
+make
 make install
 
 cd /gpdb_src/gp-xerces-3.1.2-p1
@@ -39,15 +39,17 @@ cd build
 make -j8
 make -j8 install
 
-apt-get install -y libyaml-dev \
+apt-get install -y \
+	libyaml-dev \
 	autoconf \
-	automake
+	utomake
 
 	# libzstd-dev \
 cd /gpdb_src/zstd-1.5.5
 make && make install
 
-apt-get install -y locales \
+apt-get install -y \
+	locales \
 	net-tools \
 	ninja-build
 	# openssh-client \
