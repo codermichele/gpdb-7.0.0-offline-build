@@ -40,7 +40,7 @@ apt-get install -y \
 	python3-yaml \
 	zlib1g-dev
 
-cd /gpdb_src/zstd-1.5.5
+cd /gpdb_src/zstd-1.4.1
 make && make install
 
 apt-get remove libxerces-c-dev
