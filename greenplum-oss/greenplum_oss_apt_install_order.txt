@@ -212,7 +212,6 @@
 212_libsasl2-modules_2.1.27_101-g0780600+dfsg-3ubuntu2.4_amd64.deb
 213_libssl-dev_1.1.1-1ubuntu2.1_18.04.23_amd64.deb
 214_libtool_2.4.6-2_all.deb
-215_libzstd-dev_1.3.3+dfsg-2ubuntu1.2_amd64.deb
 216_manpages-dev_4.15-1_all.deb
 217_net-tools_1.60+git20161116.90da8a0-1ubuntu1_amd64.deb
 218_ninja-build_1.8.2-1_amd64.deb
