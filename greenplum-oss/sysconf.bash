@@ -27,7 +27,9 @@ apt-get install -y \
 	libssl-dev \
 	libxerces-c-dev \
 	libxml2-dev \
-	libyaml-dev 
+	libyaml-dev \
+	autoconf \
+	automake
 
 	# libzstd-dev \
 cd /gpdb_src/zstd-1.4.1
@@ -40,7 +42,7 @@ apt-get install locales \
 	# openssh-server \
 	# openssl \
 
-cd gpdb_src/openssh-7.9p1
+cd /gpdb_src/openssh-7.9p1
 autoconf
 autoheader
 ./configure --sysconfdir=/etc/ssh
