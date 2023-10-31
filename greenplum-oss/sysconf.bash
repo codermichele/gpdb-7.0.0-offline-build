@@ -97,6 +97,7 @@ for whl in `cat ${sub_path}/whl_install_order.txt`;do
   pip install ${sub_path}/by_pip_install/${whl}
 done
 
+apt-get update
 apt-get install -y \
 	python3-dev \
 	python3-pip \
