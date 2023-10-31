@@ -1,6 +1,8 @@
 #!/bin/bash
 
 apt-get update
+# apt-cache madison libzstd-dev
+# apt-cache madison libtool
 apt-get install -y \
 	bison \
 	ccache \
@@ -22,16 +24,27 @@ apt-get install -y \
 	libperl-dev \
 	libreadline-dev \
 	libssl-dev \
-	libxerces-c-dev \
-	libxml2-dev \
+	libtool
+
+cd /gpdb_src/gp-xerces-3.1.2-p1
+mkdir build
+cd build
+../configure --prefix=/usr/local
+make -j8
+make -j8 install
+
+apt-get install -y \
 	libyaml-dev \
-	libzstd-dev \
+	autoconf \
+	automake
+
+cd /gpdb_src/zstd-1.5.5
+make && make install
+
+apt-get install -y \
 	locales \
 	net-tools \
 	ninja-build \
-	openssh-client \
-	openssh-server \
-	openssl \
 	pkg-config \
 	python3-dev \
 	python3-pip \
@@ -39,6 +52,20 @@ apt-get install -y \
 	python3-pygresql \
 	python3-yaml \
 	zlib1g-dev
+
+cd /gpdb_src/openssh-7.9p1
+autoconf
+autoheader
+./configure --sysconfdir=/etc/ssh
+make
+make install
+echo "sshd:x:1200:1200:/var/run/sshd:/usr/sbin/nologin" >> /etc/passwd
+ln -s /usr/local/sbin/sshd /usr/sbin/sshd
+
+cd /gpdb_src/libxml2-2.9.0
+./autogen.sh
+make
+make install
 
 tee -a /etc/sysctl.conf << EOF
 kernel.shmmax = 5000000000000
