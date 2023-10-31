@@ -27,11 +27,6 @@ apt-get install -y \
 	# libxerces-c-dev \
 	# libxml2-dev \
 
-cd /gpdb_src/libxml2-2.9.0
-./autogen.sh
-make
-make install
-
 cd /gpdb_src/gp-xerces-3.1.2-p1
 mkdir build
 cd build
@@ -74,6 +69,10 @@ make install
 echo "sshd:x:1200:1200:/var/run/sshd:/usr/sbin/nologin" >> /etc/passwd
 ln -s /usr/local/sbin/sshd /usr/sbin/sshd
 
+cd /gpdb_src/libxml2-2.9.0
+./autogen.sh
+make
+make install
 
 tee -a /etc/sysctl.conf << EOF
 kernel.shmmax = 5000000000000
