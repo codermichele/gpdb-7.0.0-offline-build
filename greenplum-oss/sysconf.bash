@@ -35,11 +35,21 @@ make && make install
 
 apt-get install locales \
 	net-tools \
-	ninja-build \
-	openssh-client \
-	openssh-server \
-	openssl \
-	pkg-config \
+	ninja-build
+	# openssh-client \
+	# openssh-server \
+	# openssl \
+
+cd gpdb_src/openssh-7.9p1
+autoconf
+autoheader
+./configure --sysconfdir=/etc/ssh
+make
+make install
+echo "sshd:x:1200:1200:/var/run/sshd:/usr/sbin/nologin" >> /etc/passwd
+ln -s /usr/local/sbin/sshd /usr/sbin/sshd
+
+apt-get install pkg-config \
 	python3-dev \
 	python3-pip \
 	python3-psutil \
