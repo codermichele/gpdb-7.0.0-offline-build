@@ -41,7 +41,7 @@ RUN mkdir build \
 WORKDIR /gpdb_src
 
 # Configure build environment to install at /usr/local/gpdb
-RUN ./configure --with-perl --with-python --with-libxml --with-gssapi --prefix=/usr/local/greenplum-db \
+RUN PYTHON=/usr/bin/python3 ./configure --with-perl --with-python --with-libxml --with-gssapi --prefix=/usr/local/greenplum-db \
 && make -j8 \
 && make -j8 install \
 && touch /usr/local/greenplum-db/lib/python/pygresql/__init__.py \
