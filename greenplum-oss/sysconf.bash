@@ -31,7 +31,7 @@ apt-get install -y \
 	automake
 
 	# libzstd-dev \
-cd /gpdb_src/zstd-1.4.1
+cd /gpdb_src/zstd-1.5.5
 make && make install
 
 apt-get install -y locales \
@@ -50,7 +50,7 @@ make install
 echo "sshd:x:1200:1200:/var/run/sshd:/usr/sbin/nologin" >> /etc/passwd
 ln -s /usr/local/sbin/sshd /usr/sbin/sshd
 
-apt-get install pkg-config \
+apt-get install -y pkg-config \
 	python3-dev \
 	python3-pip \
 	python3-psutil \
