@@ -3,6 +3,7 @@
 apt-get update
 
 # apt-cache madison libzstd-dev
+apt-cache madison libtool
 apt-get install -y \
 	bison \
 	ccache \
@@ -23,7 +24,8 @@ apt-get install -y \
 	libpam-dev \
 	libperl-dev \
 	libreadline-dev \
-	libssl-dev
+	libssl-dev \
+	libtool
 	# libxerces-c-dev \
 	# libxml2-dev \
 
