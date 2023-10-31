@@ -2,8 +2,7 @@
 
 apt-get update
 
-apt-cache madison libzstd-dev
-
+# apt-cache madison libzstd-dev
 apt-get install -y \
 	bison \
 	ccache \
@@ -35,7 +34,7 @@ apt-get install -y \
 cd /gpdb_src/zstd-1.4.1
 make && make install
 
-apt-get install locales \
+apt-get install -y locales \
 	net-tools \
 	ninja-build
 	# openssh-client \
