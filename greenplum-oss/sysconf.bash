@@ -56,6 +56,15 @@ apt-get install -y \
 	# openssh-server \
 	# openssl \
 
+apt-get install -y \
+	pkg-config \
+	python3-dev \
+	python3-pip \
+	python3-psutil \
+	python3-pygresql \
+	python3-yaml \
+	zlib1g-dev
+
 cd /gpdb_src/openssh-7.9p1
 autoconf
 autoheader
@@ -65,13 +74,6 @@ make install
 echo "sshd:x:1200:1200:/var/run/sshd:/usr/sbin/nologin" >> /etc/passwd
 ln -s /usr/local/sbin/sshd /usr/sbin/sshd
 
-apt-get install -y pkg-config \
-	python3-dev \
-	python3-pip \
-	python3-psutil \
-	python3-pygresql \
-	python3-yaml \
-	zlib1g-dev
 
 tee -a /etc/sysctl.conf << EOF
 kernel.shmmax = 5000000000000
