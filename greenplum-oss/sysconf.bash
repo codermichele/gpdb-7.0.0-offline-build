@@ -42,7 +42,7 @@ make -j8 install
 apt-get install -y \
 	libyaml-dev \
 	autoconf \
-	utomake
+	automake
 
 	# libzstd-dev \
 cd /gpdb_src/zstd-1.5.5
