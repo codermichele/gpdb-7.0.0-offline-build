@@ -43,6 +43,15 @@ apt-get install -y \
 cd /gpdb_src/zstd-1.5.5
 make && make install
 
+apt-get remove libxerces-c-dev
+
+cd /gpdb_src/gp-xerces-3.1.2-p1
+mkdir build
+cd build
+../configure --prefix=/usr/local
+make -j8
+make -j8 install
+
 tee -a /etc/sysctl.conf << EOF
 kernel.shmmax = 5000000000000
 kernel.shmmni = 32768
