@@ -19,4 +19,7 @@ WORKDIR /gpdb_src
 # Configure build environment to install at /usr/local/gpdb
 RUN ./configure --with-perl --with-python --with-libxml --with-gssapi --prefix=/usr/local/greenplum-db \
 && make -j8 \
-&& make -j8 install
+&& make -j8 install \
+# install gpbackup and gprestore
+&& cp -r /gpdb_src/gptools /usr/local/ \
+&& chmod 0755 /usr/local/gptools/bin/*
