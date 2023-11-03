@@ -34,7 +34,8 @@ apt-get install -y \
   python3-psutil \
   python3-pip \
   python3-yaml \
-  zlib1g-dev 
+  zlib1g-dev \
+  pkg-config
 
 cd /gpdb_src/zstd-1.5.5
 make && make install
