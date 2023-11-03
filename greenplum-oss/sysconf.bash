@@ -24,8 +24,6 @@ apt-get install -y \
   libssl-dev \
   libxml2-dev \
   libyaml-dev \
-  libzstd-dev \
-  zstd \
   locales \
   net-tools \
   ninja-build \
@@ -37,6 +35,9 @@ apt-get install -y \
   python3-pip \
   python3-yaml \
   zlib1g-dev 
+
+cd /gpdb_src/zstd-1.5.5
+make && make install
 
 tee -a /etc/sysctl.conf << EOF
 kernel.shmmax = 5000000000000
