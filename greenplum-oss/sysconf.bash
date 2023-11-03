@@ -25,6 +25,7 @@ apt-get install -y \
   libxml2-dev \
   libyaml-dev \
   libzstd-dev \
+  libzstd1 \
   locales \
   net-tools \
   ninja-build \
