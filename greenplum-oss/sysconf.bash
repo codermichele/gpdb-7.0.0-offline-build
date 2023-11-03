@@ -1,115 +1,41 @@
 #!/bin/bash
 
-# apt-get update
-# apt-get install -y \
-# python-dev \
-# python-pip \
-# python-psutil \
-# python-yaml \
-# openssl \
-# autoconf \
-# zlib1g-dev \
-# ccache \
-# cmake \
-# curl \
-# gcc \
-# g++ \
-# libssl-dev \
-# locales-all \
-# inetutils-ping \
-# cgroup-tools \
-# bison \
-# flex \
-# libreadline-dev \
-# libzstd-dev \
-# libkrb5-dev \
-# python-gssapi \
-# libevent-dev \
-# libapr1-dev \
-# libtool \
-# libyaml-dev \
-# libperl-dev \
-# libbz2-dev \
-# libcurl4-gnutls-dev \
-# libpam-dev \
-# wget \
-# git-core \
-# krb5-kdc \
-# krb5-admin-server \
-# locales \
-# net-tools \
-# ninja-build \
-# libpq-dev
-
-#apt-get -y install equivs
-sub_path="/gpdb_src/greenplum-oss"
-tee -a > ${sub_path}/libverto1.control <<EOF
-Section: libs
-Priority: optional
-Standards-Version: 3.9.2
-Package: libverto1
-Version: 0.2.4-2.1ubuntu3
-Archtecture: any
-Description: Dummy package for libverto1
-Depends: 
-Maintainer: 111@ab.com
-EOF
-
-#install equvis
-for deb in `cat ${sub_path}/equivs_apt_install_order.txt`;do
-  deb=${deb#*_}	
-  if [ ${deb} == "dh-autoreconf_17_all.deb" ] || [ ${deb} == "dh-strip-nondeterminism_0.040-1.1_build1_all.deb" ];then
-    dpkg -i --ignore-depends=debhelper ${sub_path}/greenplum-oss-debs/${deb}
-    continue
-  fi
-  dpkg -i ${sub_path}/greenplum-oss-debs/${deb}
-done
-
-#install required deb
-for deb in `cat ${sub_path}/greenplum_oss_apt_install_order.txt`;do
-  deb=${deb#*_}
-  if [ ${deb} == "libverto-libevent1_0.2.4-2.1ubuntu3_amd64.deb" ];then
-    # build empty ball of libverto1
-    equivs-build ${sub_path}/libverto1.control
-    dpkg -i /libverto1_0.2.4-2.1ubuntu3_all.deb 
-    dpkg -i ${sub_path}/greenplum-oss-debs/${deb}
-    rm -rf /libverto1_0.2.4-2.1ubuntu3_all.deb
-    continue
-  fi
-  dpkg -i ${sub_path}/greenplum-oss-debs/${deb}
-done
-
-#through pip install
-#build whl
-for tarball in `cat ${sub_path}/whl_build_order.txt`;do
-  tarball=${tarball#*_}	
-  tar -zxf ${sub_path}/by_pip_install/${tarball} -C ${sub_path}/by_pip_install
-  path_name=${tarball%.tar.gz*}
-  cd ${sub_path}/by_pip_install/${path_name}
-  python setup.py bdist_wheel
-  cp ./dist/* ${sub_path}/by_pip_install
-  cd -
-done
-
-#install whl
-for whl in `cat ${sub_path}/whl_install_order.txt`;do
-  whl=${whl#*_}
-  pip install ${sub_path}/by_pip_install/${whl}
-done
-
 apt-get update
 apt-get install -y \
-	python3-dev \
-	python3-pip \
-	python3-psutil \
-	python3-pygresql \
-	python3-yaml
-
-# echo '11111'
-# which python3
-
-cd /gpdb_src/zstd-1.5.5
-make && make install
+  bison \
+  ccache \
+  cmake \
+  curl \
+  flex \
+  git\
+  gcc \
+  g++ \
+  inetutils-ping \
+  krb5-kdc \
+  krb5-admin-server \
+  libapr1-dev \
+  libbz2-dev \
+  libcurl4-gnutls-dev \
+  libevent-dev \
+  libkrb5-dev \
+  libpam0g-dev\
+  libperl-dev \
+  libreadline-dev \
+  libssl-dev \
+  libxml2-dev \
+  libyaml-dev \
+  libzstd-dev \
+  locales \
+  net-tools \
+  ninja-build \
+  openssh-client \
+  openssh-server \
+  openssl \
+  python3-dev \
+  python3-psutil \
+  python3-pip \
+  python3-yaml \
+  zlib1g-dev 
 
 tee -a /etc/sysctl.conf << EOF
 kernel.shmmax = 5000000000000
@@ -139,4 +65,4 @@ tee -a /etc/security/limits.d/90-greenplum.conf << EOF
 * hard nproc 1048576
 EOF
 
-ulimit -n 65536
+ulimit -n 65536 65536
